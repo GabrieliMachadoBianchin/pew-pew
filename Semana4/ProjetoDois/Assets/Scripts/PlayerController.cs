@@ -30,8 +30,10 @@ public class PlayerController : MonoBehaviour
     void Fire()
     {
         var bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-
+        AudioSource shoot = GetComponent<AudioSource>();
+        shoot.Play();
         bullet.GetComponent<Rigidbody>().linearVelocity = bullet.transform.forward * 6f ;
-        Destroy(bullet.transform, 3f);
+        // Destroy(bullet.transform, 3f);
+        Destroy(bullet, 3f);
     }
 }
