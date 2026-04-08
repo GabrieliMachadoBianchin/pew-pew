@@ -10,7 +10,7 @@ public class BulletController : MonoBehaviour
 
         GameObject enemy = (GameObject)Instantiate(Resources.Load("Enemy", typeof(GameObject)));
 
-        enemy.transform.position = new Vector3(randomx, 0, randomz );
+        enemy.transform.position = new Vector3(randomx, 1, randomz );
 
         enemy.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
 
