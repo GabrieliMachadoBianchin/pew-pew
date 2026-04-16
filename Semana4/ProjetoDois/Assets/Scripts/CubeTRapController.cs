@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class CubeTRapController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) { 
+        if (collision.gameObject.CompareTag("Player")) {
+            AudioSource deathSound = GetComponent<AudioSource>();
+            deathSound.Play();
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.Die();
+            }
             Destroy(collision.gameObject);        
         }
     }
 }
+

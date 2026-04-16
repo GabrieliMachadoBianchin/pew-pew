@@ -1,10 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-
 
     void Start()
     {
@@ -24,7 +24,14 @@ public class PlayerController : MonoBehaviour
 
             Fire();
         }
-
+        /*
+        timer += Time.deltaTime;
+        if (timer >= 1f)
+        {
+            FindFirstObjectByType<ScoreManager>().AddPoint(10);
+            timer = 0;
+        }
+        */
     }
 
     void Fire()
@@ -36,4 +43,12 @@ public class PlayerController : MonoBehaviour
         // Destroy(bullet.transform, 3f);
         Destroy(bullet, 3f);
     }
+
+    public void Die()
+    {
+        FindFirstObjectByType<GameManager>().PlayerMorreu();
+
+        gameObject.SetActive(false);
+    }
+
 }
